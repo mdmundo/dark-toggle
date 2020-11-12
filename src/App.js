@@ -102,16 +102,17 @@ const App = () => {
           align='center'
           color='textPrimary'
           gutterBottom>
-          Pricing
+          What is dark mode?
         </Typography>
         <Typography
           variant='h5'
           align='center'
           color='textSecondary'
           component='p'>
-          Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default Material-UI components
-          with little customization.
+          Surprisingly enough, dark mode predates light mode by a couple of
+          decades. At the core of its inception, dark mode was not an intended
+          solution, but merely a by-product of the technology in the early
+          beginnings of personal computing.
         </Typography>
         <Grid
           container
