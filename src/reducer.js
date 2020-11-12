@@ -1,21 +1,12 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
-const lightTheme = createMuiTheme();
-const darkTheme = createMuiTheme({
-  palette: {
-    type: 'dark'
-  }
-});
-
 const themeReducer = (state, action) => {
   switch (action.type) {
     case 'DARK':
-      return darkTheme;
+      return true;
     case 'LIGHT':
-      return lightTheme;
+      return false;
     default:
       return state;
   }
 };
 
-export { themeReducer as default, lightTheme };
+export { themeReducer as default };

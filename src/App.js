@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
+import Brightness5Icon from '@material-ui/icons/Brightness5';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -56,7 +57,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = () => {
-  const { dispatch } = useContext(ThemeContext);
+  const { isDark, dispatch } = useContext(ThemeContext);
+
+  const [text, setText] = useState('Dark Theme');
+  const [icon, setIcon] = useState(<Brightness2Icon />);
+
+  const setTheme = () => {
+    if (isDark) {
+      dispatch({ type: 'LIGHT' });
+      setText('Dark Theme');
+      setIcon(<Brightness2Icon />);
+    } else {
+      dispatch({ type: 'DARK' });
+      setText('Light Theme');
+      setIcon(<Brightness5Icon />);
+    }
+  };
 
   const classes = useStyles();
 
@@ -74,7 +90,7 @@ const App = () => {
             color='inherit'
             noWrap
             className={classes.toolbarTitle}>
-            The Dark Mode
+            The Dark Theme
           </Typography>
         </Toolbar>
       </AppBar>
@@ -108,9 +124,9 @@ const App = () => {
             color='primary'
             size='large'
             className={classes.button}
-            startIcon={<Brightness2Icon />}
-            onClick={() => dispatch({ type: 'DARK' })}>
-            Dark Mode
+            startIcon={icon}
+            onClick={setTheme}>
+            {text}
           </Button>
         </Grid>
       </Container>

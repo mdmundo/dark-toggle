@@ -1,18 +1,31 @@
 import React, { useReducer } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import reportWebVitals from './reportWebVitals';
 import ThemeContext from './context';
-import themeReducer, { lightTheme } from './reducer';
+import themeReducer from './reducer';
 import App from './App';
 
+const dark = {
+  palette: {
+    type: 'dark'
+  }
+};
+
+const light = {
+  palette: {
+    type: 'light'
+  }
+};
+
 const Index = () => {
-  const [theme, dispatch] = useReducer(themeReducer, lightTheme);
+  const [isDark, dispatch] = useReducer(themeReducer, false);
 
   return (
     <React.StrictMode>
-      <ThemeContext.Provider value={{ theme, dispatch }}>
-        <ThemeProvider theme={theme}>
+      <ThemeContext.Provider value={{ isDark, dispatch }}>
+        <ThemeProvider theme={createMuiTheme(isDark ? dark : light)}>
           <App />
         </ThemeProvider>
       </ThemeContext.Provider>
