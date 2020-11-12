@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import ThemeContext from './context';
 
 const Copyright = () => {
   return (
@@ -56,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const App = () => {
+  const { dispatch } = useContext(ThemeContext);
+
   const classes = useStyles();
 
   return (
@@ -106,18 +108,19 @@ const App = () => {
             color='primary'
             size='large'
             className={classes.button}
-            startIcon={<Brightness2Icon />}>
+            startIcon={<Brightness2Icon />}
+            onClick={() => dispatch({ type: 'DARK' })}>
             Dark Mode
           </Button>
         </Grid>
       </Container>
       {/* End hero unit */}
       {/* Footer */}
-	<footer className={classes.footer}>
-          <Container maxWidth='xs'>
-            <Copyright />
-          </Container>
-        </footer>
+      <footer className={classes.footer}>
+        <Container maxWidth='xs'>
+          <Copyright />
+        </Container>
+      </footer>
       {/* End footer */}
     </div>
   );
