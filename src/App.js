@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6)
+    padding: theme.spacing(8, 1, 6)
   },
   footer: {
     padding: theme.spacing(3, 2),
@@ -102,17 +102,16 @@ const App = () => {
           align='center'
           color='textPrimary'
           gutterBottom>
-          What is dark mode?
+          About
         </Typography>
         <Typography
           variant='h5'
           align='center'
           color='textSecondary'
           component='p'>
-          Surprisingly enough, dark mode predates light mode by a couple of
-          decades. At the core of its inception, dark mode was not an intended
-          solution, but merely a by-product of the technology in the early
-          beginnings of personal computing.
+          Although the specific hues and colors vary, dark mode is the color
+          scheme of any interface that displays bright text and interface
+          elements atop a darker background.
         </Typography>
         <Grid
           container
